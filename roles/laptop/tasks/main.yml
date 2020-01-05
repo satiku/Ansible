@@ -208,6 +208,12 @@
     dest: ~/.muttrc
 
 
+- name: create mutt in come directory
+  file:
+    path: ~/.mutt
+    state: directory
+
+
 - name: add base mutt gmail.satiku config 
   tags: configs
   template: 
