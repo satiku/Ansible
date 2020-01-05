@@ -1,0 +1,8 @@
+---
+- name: latop 
+  hosts: localhost
+  user: zhudson
+  roles:
+    - laptop
+
+
