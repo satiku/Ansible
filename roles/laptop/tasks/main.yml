@@ -200,7 +200,7 @@
 - name: add tmux config 
   tags: configs
   copy: 
-    src: files/task-pki
+    src: files/task-pki/
     dest: ~/.task
 
 
