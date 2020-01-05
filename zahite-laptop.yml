@@ -1,8 +1,0 @@
----
-- name: latop 
-  hosts: laptop
-  user: zhudson
-  roles:
-    - laptop
-
-
