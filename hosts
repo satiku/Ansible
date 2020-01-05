@@ -1,0 +1,7 @@
+[all]
+
+[nexus01]
+66.228.43.219
+
+[nexus:children]
+nexus01
