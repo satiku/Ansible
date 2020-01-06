@@ -32,7 +32,7 @@
     - firefox-esr
     - htop
     - mutt
-
+    - taskwarrior
 
 - name: change shell to zsh
   become: yes
@@ -191,6 +191,25 @@
     src: files/lightdm.conf
     dest: /etc/lightdm/lightdm.conf
  
+- name: create .task dir 
+  file: 
+    path: ~/.task
+    state: directory
+
+
+- name: add tmux config 
+  tags: configs
+  copy: 
+    src: files/task-pki/
+    dest: ~/.task
+
+
+
+- name: add base taskwarrior configjkj config 
+  tags: configs
+  template: 
+    src: templates/.taskrc.j2
+    dest: ~/.taskrc
 
 
 - name: add lightdm-gtk-greeter.conf 
@@ -206,6 +225,12 @@
   copy: 
     src: files/.muttrc
     dest: ~/.muttrc
+
+
+- name: create mutt in come directory
+  file:
+    path: ~/.mutt
+    state: directory
 
 
 - name: add base mutt gmail.satiku config 
