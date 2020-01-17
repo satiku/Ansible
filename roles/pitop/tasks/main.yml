@@ -1,12 +1,9 @@
 ---
 
 
-
 - name: update apt cache
   apt:
     update_cache: yes
-    
-
 
 
 - name: install base packages
@@ -14,22 +11,22 @@
     name: "{{ packages }}"
   vars:
     packages:
-    - ntfs-3g
-    - minicom
-    - vim
-    - p7zip-full
-    - pv
-    - luakit
-    - tmux
-    - i3
+      - ntfs-3g
+      - minicom
+      - vim
+      - p7zip-full
+      - pv
+      - luakit
+      - tmux
+      - i3
 
 
 - name: Creates directory
-  file: 
+  file:
     path: /home/pi/tmm
     state: directory
 
-- name: copy lightdm config for i3 
+- name: copy lightdm config for i3
   copy:
     src: files/lightdm.conf
     dest: /etc/lightdm/lightdm.conf
@@ -38,26 +35,20 @@
     mode: 0644
 
 
-
 - name: set mountpoints
-  mount: 
-    name: /mnt/nfs1/volumes 
-    src: 10.5.11.20:/export/Volumes/ 
-    fstype: nfs 
+  mount:
+    name: /mnt/nfs1/volumes
+    src: 10.5.11.20:/export/Volumes/
+    fstype: nfs
     state: mounted
 
 
 - name: set mountpoints
-  mount: 
-    name: /mnt/nfs1/archive 
-    src: 10.5.11.20:/export/Archive/ 
-    fstype: nfs 
+  mount:
+    name: /mnt/nfs1/archive
+    src: 10.5.11.20:/export/Archive/
+    fstype: nfs
     state: mounted
-
-
-
-
-
 
 
 #- name: Unarchive a file that needs to be downloaded (added in 2.0)
