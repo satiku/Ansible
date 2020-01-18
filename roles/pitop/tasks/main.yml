@@ -51,8 +51,8 @@
     state: mounted
 
 
-#- name: Unarchive a file that needs to be downloaded (added in 2.0)
-#  unarchive:
-#    src: http://release.tinymediamanager.org/dist/tmm_2.9.12_597414a_linux.tar.gz
-#    dest: /home/pi/tmm
-#    remote_src: yes
+# - name: Unarchive a file that needs to be downloaded (added in 2.0)
+#   unarchive:
+#     src: http://release.tinymediamanager.org/dist/tmm_2.9.12_597414a_linux.tar.gz
+#     dest: /home/pi/tmm
+#     remote_src: yes
