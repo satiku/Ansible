@@ -1,7 +1,7 @@
 ---
 
 # BPI
-# install docker compose 
+# install docker compose
 #
 #
 #
@@ -13,15 +13,15 @@
     name: "{{ packages }}"
   vars:
     packages:
-    - apt-transport-https
-    - ca-certificates
-    - curl
-    - gnupg2
-    - software-properties-common
-    - python-pip
-    - libffi-dev
-    - libssl-dev
-    - python-setuptools
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg2
+      - software-properties-common
+      - python-pip
+      - libffi-dev
+      - libssl-dev
+      - python-setuptools
 
 
 - name: add docker group
@@ -41,7 +41,6 @@
     append: yes
 
 
-
 - name: Add an Apt signing key, uses whichever key is at the URL
   apt_key:
     url: https://download.docker.com/linux/debian/gpg
@@ -58,38 +57,33 @@
     update_cache: yes
 
 
-
 - name: install docker-ce
-  apt: 
-    name: docker-ce=5:19.03.5~3-0~debian-buster 
+  apt:
+    name: docker-ce=5:19.03.5~3-0~debian-buster
     state: present
   tags: packages
 
 
 - name: install docker-compose
-  apt: 
+  apt:
     name: docker-compose
     state: present
   tags: packages
 
 
+# - name:
+#   pip:
+#     name: docker-py
 
-#- name: 
-#  pip: 
-#    name: docker-py
-
-
-    
 
 # - name: Execute the command in remote shell; stdout goes to the specified file on the remote.
-#   shell: curl -sSL https://get.docker.com  | sh 
+#   shell: curl -sSL https://get.docker.com  | sh
 #   args:
 #     creates: /etc/docker/key.json
 
 
-
 #
-#- name: install docker compose
-#  pip:
-#    name: docker-compose
+# - name: install docker compose
+#   pip:
+#     name: docker-compose
 #

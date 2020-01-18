@@ -1,7 +1,7 @@
 ---
 - name: install kodi
   apt:
-    name: kodi=2:18.2-1~stretch 
+    name: kodi=2:18.2-1~stretch
     state: present
   notify: prime-kodi
 
@@ -16,19 +16,15 @@
   copy: src=files/kodi.desktop dest=/home/pi/Desktop/kodi.desktop
 
 
-- name: add new source fill 
+- name: add new source fill
   become: yes
   become_user: pi
   copy: src=files/sources.xml dest=/home/pi/.kodi/userdata/sources.xml
 
-- name: add webserver 
+- name: add webserver
   become: yes
   become_user: pi
   lineinfile:
-    dest: /home/pi/.kodi/userdata/guisettings.xml 
+    dest: /home/pi/.kodi/userdata/guisettings.xml
     regexp: '<webserver>'
     line: '        <webserver>true</webserver>'
-
-
-
-
