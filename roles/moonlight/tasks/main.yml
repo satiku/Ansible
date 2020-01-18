@@ -1,7 +1,7 @@
 ---
 
 #
-# install docker compose 
+# install docker compose
 #
 #
 #
@@ -23,12 +23,10 @@
 - name: update apt cache
   apt:
     update_cache: yes
-    
 
 
 - name: install moonlight
-  apt: 
-    name: moonlight-embedded  
+  apt:
+    name: moonlight-embedded
     state: present
   tags: packages
-
