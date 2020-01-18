@@ -63,9 +63,9 @@
   tags: packages
 
 
-#- name:
-#  pip:
-#    name: docker-py
+# - name:
+#   pip:
+#     name: docker-py
 
 
 # - name: Execute the command in remote shell; stdout goes to the specified file on the remote.

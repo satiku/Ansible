@@ -1,11 +1,11 @@
 ---
 
 
-#- name: Download latest Maggic mirror script
-#  get_url:
-#    url: https://raw.githubusercontent.com/MichMich/MagicMirror/master/installers/raspberry.sh
-#    dest: /home/pi/raspberry.sh
-#    mode: 0755
+# - name: Download latest Maggic mirror script
+#   get_url:
+#     url: https://raw.githubusercontent.com/MichMich/MagicMirror/master/installers/raspberry.sh
+#     dest: /home/pi/raspberry.sh
+#     mode: 0755
 
 
 - name: rotate display
@@ -39,14 +39,14 @@
   notify: auto startup
 
 
-#- name : pull magic mirror
-#  become: yes
-#  become_user: pi
-#  git:
-#    repo: https://github.com/MichMich/MagicMirror.git
-#    dest: /home/pi/MagicMirror
-#    force: yes
-#  notify: install mirror
+# - name : pull magic mirror
+#   become: yes
+#   become_user: pi
+#   git:
+#     repo: https://github.com/MichMich/MagicMirror.git
+#     dest: /home/pi/MagicMirror
+#     force: yes
+#   notify: install mirror
 
 
 - name: pull traffic
@@ -131,5 +131,5 @@
 #   command: pm2 save
 
 
-#- name: copy sources.xml
-#  copy: src=files/sources.xml dest=/home/pi/.kodi/userdata/sources.xml
+# - name: copy sources.xml
+#   copy: src=files/sources.xml dest=/home/pi/.kodi/userdata/sources.xml
