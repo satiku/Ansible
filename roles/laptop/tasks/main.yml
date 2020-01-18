@@ -1,55 +1,54 @@
 ---
 - name: install base packages
-  become: true 
+  become: true
   tags: installs
   apt:
     update_cache: yes
     name: "{{ packages }}"
   vars:
     packages:
-    - i3  
-    - dmenu 
-    - i3lock
-    - feh
-    - xserver-xorg
-    - xinit
-    - vim-nox
-    - compton 
-    - lemonbar
-    - python-pip 
-    - python3-pip 
-    - fonts-powerline
-    - tmux
-    - conky 
-    - luakit
-    - zsh
-    - fonts-font-awesome
-    - lightdm
-    - git
-    - xfce4-terminal   
-    - ansible
-    - openvpn
-    - firefox-esr
-    - htop
-    - mutt
-    - taskwarrior
+      - i3
+      - dmenu
+      - i3lock
+      - feh
+      - xserver-xorg
+      - xinit
+      - vim-nox
+      - compton
+      - lemonbar
+      - python-pip
+      - python3-pip
+      - fonts-powerline
+      - tmux
+      - conky
+      - luakit
+      - zsh
+      - fonts-font-awesome
+      - lightdm
+      - git
+      - xfce4-terminal
+      - ansible
+      - openvpn
+      - firefox-esr
+      - htop
+      - mutt
+      - taskwarrior
 
 - name: change shell to zsh
   become: yes
   lineinfile:
-        create: yes
-        dest: /etc/passwd
-        regexp: '^zhudson'
-        line : 'zhudson:x:1000:1000:zhudson,,,:/home/zhudson:/usr/bin/zsh'
+    create: yes
+    dest: /etc/passwd
+    regexp: '^zhudson'
+    line: 'zhudson:x:1000:1000:zhudson,,,:/home/zhudson:/usr/bin/zsh'
 
 
-
-- name : bumblebee repo
+- name: bumblebee repo
   become: yes
   become_user: zhudson
   git:
     repo: https://github.com/tobi-wan-kenobi/bumblebee-status
-    dest: /home/zhudson/.bumblebee-status 
+    dest: /home/zhudson/.bumblebee-status
 
 - name: install oh-my-zsh
   shell: sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
@@ -57,172 +56,170 @@
     chdir: /home/zhudson
     creates: /home/zhudson/.oh-my-zsh/README.md
 
-- name : zsh powerlevel 9k repo
+- name: zsh powerlevel 9k repo
   become: yes
   become_user: zhudson
   git:
     repo: https://github.com/bhilburn/powerlevel9k.git
-    dest: /home/zhudson/.oh-my-zsh/custom/themes/powerlevel9k 
+    dest: /home/zhudson/.oh-my-zsh/custom/themes/powerlevel9k
 
 
 - name: change shell to zsh
   become: yes
   lineinfile:
-        create: yes
-        dest: /home/zhudson/.zshrc
-        regexp: '^ZSH_THEME'
-        line : 'ZSH_THEME="powerlevel9k/powerlevel9k"'
+    create: yes
+    dest: /home/zhudson/.zshrc
+    regexp: '^ZSH_THEME'
+    line: 'ZSH_THEME="powerlevel9k/powerlevel9k"'
 
 
-- name: install powerline 
+- name: install powerline
   tags: installs
-  pip: 
+  pip:
     name: powerline-status
 
 
-- name: install powerline 
+- name: install powerline
   tags: installs
-  pip: 
+  pip:
     name: "{{  modules  }}"
   vars:
     modules:
-     - psutil
-     - netifaces
-     - requests
-     - power 
-     - i3ipc
+      - psutil
+      - netifaces
+      - requests
+      - power
+      - i3ipc
 
 
-- name: pip modules for bumblebee status line 
+- name: pip modules for bumblebee status line
   tags: installs
-  pip: 
-   executable: pip3
-   name: "{{  modules  }}"
+  pip:
+    executable: pip3
+    name: "{{  modules  }}"
   vars:
     modules:
-     - psutil
-     - netifaces
-     - requests
-     - power 
-     - i3ipc
+      - psutil
+      - netifaces
+      - requests
+      - power
+      - i3ipc
 
-- name: add zsh config 
+- name: add zsh config
   tags: configs
-  copy: 
+  copy:
     src: files/.zshrc
     dest: ~/.zshrc
 
 
-- name: add bar config 
+- name: add bar config
   tags: configs
-  copy: 
+  copy:
     src: files/bar.sh
     dest: ~/bar.sh
 
-- name: add bar2 config 
+- name: add bar2 config
   tags: configs
-  copy: 
+  copy:
     src: files/bar2.sh
     dest: ~/bar2.sh
 
-- name: copy background image 
+- name: copy background image
   tags: configs
-  copy: 
+  copy:
     src: files/bg.jpg
     dest: ~/bg.jpg
 
-- name: copy background image 
+- name: copy background image
   tags: configs
-  copy: 
+  copy:
     src: files/bg.png
     dest: ~/bg.png
 
 
-- name: add bash config 
+- name: add bash config
   tags: configs
-  copy: 
+  copy:
     src: files/.bashrc
     dest: ~/.bashrc
 
-- name: Create i3 config dir 
-  file: 
+- name: Create i3 config dir
+  file:
     path: ~/.config/i3
     state: directory
 
 
-- name: add i3 config 
+- name: add i3 config
   tags: configs
-  copy: 
+  copy:
     src: files/config
     dest: ~/.config/i3/config
 
 
-
-- name: create xfce4 termnal config dir  
-  file: 
+- name: create xfce4 termnal config dir
+  file:
     path: ~/.config/xfce4/terminal/
     state: directory
 
 
-- name: copy xfce4 terminal config 
+- name: copy xfce4 terminal config
   tags: configs
-  copy: 
+  copy:
     src: files/terminalrc
     dest: ~/.config/xfce4/terminal/terminalrc
 
 
-- name: add vim  config 
+- name: add vim  config
   tags: configs
-  copy: 
+  copy:
     src: files/.vimrc
     dest: ~/.vimrc
 
-- name: add tmux config 
+- name: add tmux config
   tags: configs
-  copy: 
+  copy:
     src: files/tmux.conf
     dest: ~/.tmux.conf
 
 
-- name: add lightdm.conf 
+- name: add lightdm.conf
   tags: configs
-  become: true 
-  copy: 
+  become: true
+  copy:
     src: files/lightdm.conf
     dest: /etc/lightdm/lightdm.conf
- 
-- name: create .task dir 
-  file: 
+
+- name: create .task dir
+  file:
     path: ~/.task
     state: directory
 
 
-- name: add tmux config 
+- name: add tmux config
   tags: configs
-  copy: 
+  copy:
     src: files/task-pki/
     dest: ~/.task
 
 
-
-- name: add base taskwarrior configjkj config 
+- name: add base taskwarrior configjkj config
   tags: configs
-  template: 
+  template:
     src: templates/.taskrc.j2
     dest: ~/.taskrc
 
 
-- name: add lightdm-gtk-greeter.conf 
+- name: add lightdm-gtk-greeter.conf
   tags: configs
-  become: true 
-  copy: 
+  become: true
+  copy:
     src: files/lightdm-gtk-greeter.conf
     dest: /etc/lightdm/lightdm-gtk-greeter.conf
- 
 
-- name: add base mutt config 
+
+- name: add base mutt config
   tags: configs
-  copy: 
+  copy:
     src: files/.muttrc
     dest: ~/.muttrc
 
@@ -233,107 +230,92 @@
     state: directory
 
 
-- name: add base mutt gmail.satiku config 
+- name: add base mutt gmail.satiku config
   tags: configs
-  template: 
+  template:
     src: templates/gmail.satiku.j2
     dest: ~/.mutt/gmail.satiku
 
 
-- name: add base mutt config 
+- name: add base mutt config
   tags: configs
-  template: 
+  template:
     src: templates/gmail.zconingford.j2
     dest: ~/.mutt/gmail.zconingford
 
 
-
-
-- name : pull the seed repo  
+- name: pull the seed repo
   become: yes
   become_user: zhudson
   git:
     repo: https://github.com/satiku/seed
     dest: /home/zhudson/projects/seed
 
-
-
-- name: add base mutt config 
+- name: add base mutt config
   tags: configs
-  copy: 
+  copy:
     src: files/.muttrc
     dest: ~/.muttrc
 
 
-- name: add base mutt gmail.satiku config 
+- name: add base mutt gmail.satiku config
   tags: configs
-  template: 
+  template:
     src: templates/gmail.satiku.j2
     dest: ~/.mutt/gmail.satiku
 
 
-- name: add base mutt config 
+- name: add base mutt config
   tags: configs
-  template: 
+  template:
     src: templates/gmail.zconingford.j2
     dest: ~/.mutt/gmail.zconingford
 
 
-- name: install i3-gaps dependencies 
-  become: true 
+- name: install i3-gaps dependencies
+  become: true
   tags: installs
   apt:
     update_cache: yes
     name: "{{ packages }}"
   vars:
     packages:
-    - gcc 
-    - make 
-    - dh-autoreconf 
-    - libxcb-keysyms1-dev 
-    - libpango1.0-dev 
-    - libxcb-util0-dev 
-    - xcb 
-    - libxcb1-dev 
-    - libxcb-icccm4-dev 
-    - libyajl-dev 
-    - libev-dev 
-    - libxcb-xkb-dev 
-    - libxcb-cursor-dev 
-    - libxkbcommon-dev 
-    - libxcb-xinerama0-dev 
-    - libxkbcommon-x11-dev 
-    - libstartup-notification0-dev 
-    - libxcb-randr0-dev 
-    - libxcb-xrm0 
-    - libxcb-xrm-dev 
-    - libxcb-shape0-dev
+      - gcc
+      - make
+      - dh-autoreconf
+      - libxcb-keysyms1-dev
+      - libpango1.0-dev
+      - libxcb-util0-dev
+      - xcb
+      - libxcb1-dev
+      - libxcb-icccm4-dev
+      - libyajl-dev
+      - libev-dev
+      - libxcb-xkb-dev
+      - libxcb-cursor-dev
+      - libxkbcommon-dev
+      - libxcb-xinerama0-dev
+      - libxkbcommon-x11-dev
+      - libstartup-notification0-dev
+      - libxcb-randr0-dev
+      - libxcb-xrm0
+      - libxcb-xrm-dev
+      - libxcb-shape0-dev
 
 
-
-
-- name : pull i3-gaps 
+- name: pull i3-gaps
   become: yes
   become_user: zhudson
   register: pull_i3gaps
   git:
-    repo: https://github.com/Airblader/i3 
+    repo: https://github.com/Airblader/i3
     dest: /home/zhudson/i3-gaps
 
 
-
-
-
-- name: run i3-gaps compile script 
+- name: run i3-gaps compile script
   become: yes
   become_user: zhudson
   when: pull_i3gaps.changed
-  script: files/i3-gaps_install.sh 
+  script: files/i3-gaps_install.sh
   args:
     chdir: /home/zhudson
-
-
-
- 
-
- 
