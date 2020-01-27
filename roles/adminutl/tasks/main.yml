@@ -1,23 +1,13 @@
 ---
 
-#- name: set hostname
-#use templates
-#
-
-
-
-# add armin user and put in sudo group
-
-
 - name: install base packages
   apt:
     name: "{{ packages }}"
     update_cache: yes
   vars:
     packages:
-    - guake
-    - ccze
-
+      - guake
+      - ccze
 
 
 # config.txt teplate
@@ -26,14 +16,11 @@
 #   notify: reboot
 
 
-    
-    
 - name: install ansible
   apt:
     name: ansible
     state: present
     update_cache: yes
-
 
 
 - name: Add an Apt signing key, uses whichever key is at the URL
@@ -47,7 +34,7 @@
 
 
 - name: install syncthing
-  apt: 
+  apt:
     name: syncthing=0.14.50
     state: present
     update_cache: yes

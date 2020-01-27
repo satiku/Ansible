@@ -1,25 +1,11 @@
 ---
 
-#- name: set hostname
-#use templates
-#
-
-
-
-# add armin user and put in sudo group
-
-
-
-
-
-
 # config.txt teplate
 # - name: set config.txt
 #   template: src=config.jinja dest=/boot/config.txt
 #   notify: reboot
 
 - name: disable swap
-  apt: 
+  apt:
     name: dphys-swapfile
     state: absent
-
