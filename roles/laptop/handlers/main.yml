@@ -1,6 +1,3 @@
 ---
 - name: restart-kodi
   command: systemctl restart kodi
-
-
-
