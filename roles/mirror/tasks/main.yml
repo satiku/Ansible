@@ -118,29 +118,25 @@
 
 
 
-# - name: load 
-#   become: yes
-#   become_user: pi
-#   command: pm2 startup linux -u pi --hp /home/pi
+ - name: set pm2 to autostart  
+   become: yes
+   become_user: pi
+   command: pm2 startup linux -u pi --hp /home/pi
 
 
 
 
-# - name: load 
-#   become: yes
-#   become_user: pi
-#   command: pm2 start ~/MagicMirror/installers/pm2_MagicMirror.json
-
-# - name: load 
-#   become: yes
-#   become_user: pi
-#   command: pm2 save
+ - name: load maggic mirror autostart script into pm2
+   become: yes
+   become_user: pi
+   command: pm2 start ~/MagicMirror/installers/mm.sh
 
 
+ - name: save pm2 config 
+   become: yes
+   become_user: pi
+   command: pm2 save
 
-
-#- name: copy sources.xml
-#  copy: src=files/sources.xml dest=/home/pi/.kodi/userdata/sources.xml
 
 
 
