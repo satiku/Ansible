@@ -8,7 +8,6 @@
 #    mode: 0755
 
 
-
 - name: rotate display
   lineinfile:
     dest: /boot/config.txt
@@ -23,37 +22,14 @@
 
 
 
-
-- name: copy script
-  copy:
-    src: files/raspberry.sh
-    dest: /home/pi/raspberry.sh
-    owner: pi
-    mode: 0755
-
-
-
-- name: Run latest magic mirror script
-  command: /home/pi/raspberry.sh
+- name : pull magic mirror
   become: yes
   become_user: pi
-  args:
-   chdir: /home/pi
-   creates: /home/pi/MagicMirror/
-  notify: auto startup
-
-
-
-
-
-#- name : pull magic mirror
-#  become: yes
-#  become_user: pi
-#  git:
-#    repo: https://github.com/MichMich/MagicMirror.git
-#    dest: /home/pi/MagicMirror
-#    force: yes
-#  notify: install mirror
+  git:
+    repo: https://github.com/MichMich/MagicMirror.git
+    dest: /home/pi/MagicMirror
+    force: yes
+  notify: install mirror
 
 
 
