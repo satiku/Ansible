@@ -4,5 +4,5 @@
     user: solo 
     become: true
     roles: 
-      - docker-hosts-X64
+      - docker-host-X64
 
