@@ -1,0 +1,16 @@
+[all]
+
+[DEV01]
+
+[DEV02]
+
+[DEV03]
+
+[DEV04]
+
+
+[DEV-CLUSTER]
+DEV01
+DEV02
+DEV04
+
