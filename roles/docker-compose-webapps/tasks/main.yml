@@ -1,0 +1,8 @@
+- git: 
+    repo: 'https://github.com/satiku/docker-compose'
+    dest: /srv/docker-compose
+
+- name: start docker-compose 
+  docker_compose:
+    project_src: /srv/docker-compose/traefik
+    
