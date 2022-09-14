@@ -2,7 +2,25 @@
     repo: 'https://github.com/satiku/docker-compose'
     dest: /srv/docker-compose
 
-- name: start docker-compose 
+- name: start traefik docker-compose 
   docker_compose:
     project_src: /srv/docker-compose/traefik
+    
+
+- name: start readme docker-compose 
+  docker_compose:
+    project_src: /srv/docker-compose/readme
+    
+
+- name: start miniflux docker-compose 
+  docker_compose:
+    project_src: /srv/docker-compose/miniflux 
+
+- name: start kanboard docker-compose 
+  docker_compose:
+    project_src: /srv/docker-compose/kanboard
+    
+- name: start uptime-kuma docker-compose 
+  docker_compose:
+    project_src: /srv/docker-compose/uptime-kuma
     
