@@ -1,6 +1,8 @@
 - git: 
     repo: 'git@github.com:satiku/Docker-Compose.git'
     dest: /srv/docker-compose
+    version: node-red
+
 
 - name: start traefik docker-compose 
   docker_compose:
@@ -19,6 +21,10 @@
 - name: start kanboard docker-compose 
   docker_compose:
     project_src: /srv/docker-compose/kanboard
+    
+- name: start node-red docker-compose 
+  docker_compose:
+    project_src: /srv/docker-compose/node-red
     
 - name: start uptime-kuma docker-compose 
   docker_compose:
