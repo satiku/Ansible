@@ -1,7 +1,6 @@
 - git: 
     repo: 'git@github.com:satiku/Docker-Compose.git'
     dest: /srv/docker-compose
-    version: node-red
 
 
 - name: start traefik docker-compose 
