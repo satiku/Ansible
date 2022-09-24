@@ -2,7 +2,6 @@
     repo: 'git@github.com:satiku/Docker-Compose.git'
     dest: /srv/docker-compose
 
-
 - name: start traefik docker-compose 
   docker_compose:
     project_src: /srv/docker-compose/traefik
@@ -28,4 +27,8 @@
 - name: start uptime-kuma docker-compose 
   docker_compose:
     project_src: /srv/docker-compose/uptime-kuma
+    
+- name: start jenkins docker-compose 
+  docker_compose:
+    project_src: /srv/docker-compose/jenkins
     
