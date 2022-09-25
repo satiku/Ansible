@@ -1,6 +1,7 @@
 - git: 
     repo: 'git@github.com:satiku/Docker-Compose.git'
     dest: /srv/docker-compose
+    version: main
 
 - name: start traefik docker-compose 
   docker_compose:
