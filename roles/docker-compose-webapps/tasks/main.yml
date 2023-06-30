@@ -37,3 +37,7 @@
   docker_compose:
     project_src: /srv/docker-compose/linkace
     
+- name: start audiobookshlef docker-compose 
+  docker_compose:
+    project_src: /srv/docker-compose/audio-bookshelf
+    
