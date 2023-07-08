@@ -41,3 +41,7 @@
   docker_compose:
     project_src: /srv/docker-compose/audio-bookshelf
     
+- name: start quickshare docker-compose 
+  docker_compose:
+    project_src: /srv/docker-compose/quickshare
+    
