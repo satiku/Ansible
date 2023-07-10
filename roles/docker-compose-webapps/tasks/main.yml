@@ -44,4 +44,9 @@
 - name: start pingvin-share
   docker_compose:
     project_src: /srv/docker-compose/pingvin-share
+
+    
+- name: start fbc-nginx
+  docker_compose:
+    project_src: /srv/docker-compose/fbc-nginx
     
