@@ -3,6 +3,15 @@
     dest: /srv/docker-compose
     version: main
 
+
+- name: touch acme.json
+  file:  
+    path: /srv/docker-compose/traefik/acme.json
+    state: touch
+    mode: u+rw,g-rwx,o-rwx
+    modification_time: preserve
+    access_time: preserve
+
 - name: start traefik docker-compose 
   docker_compose:
     project_src: /srv/docker-compose/traefik
