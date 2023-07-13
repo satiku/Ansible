@@ -9,7 +9,8 @@
     path: /srv/docker-compose/traefik/acme.json
     state: touch
     mode: u+rw,g-rwx,o-rwx
-
+    modification_time: preserve
+    access_time: preserve
 
 - name: start traefik docker-compose 
   docker_compose:
