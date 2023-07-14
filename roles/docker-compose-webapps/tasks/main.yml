@@ -58,4 +58,9 @@
 - name: start fbc-nginx
   docker_compose:
     project_src: /srv/docker-compose/fbc-nginx
+
+
+- name: start watchtower
+  docker_compose:
+    project_src: /srv/docker-compose/watchtower
     
