@@ -63,4 +63,8 @@
 - name: start watchtower
   docker_compose:
     project_src: /srv/docker-compose/watchtower
-    
+
+
+- name: start jellyfin
+  docker_compose:
+    project_src: /srv/docker-compose/jellyfin
