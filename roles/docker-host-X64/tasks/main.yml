@@ -83,6 +83,12 @@
   tags: packages
 
 
+ - name:
+   pip:
+     name: jsondiff
+
+
+
 # - name:
 #   pip:
 #     name: docker-py
