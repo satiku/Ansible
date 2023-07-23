@@ -13,58 +13,84 @@
     access_time: preserve
 
 - name: start traefik docker-compose 
-  docker_compose:
-    project_src: /srv/docker-compose/traefik
+  community.docker.docker_stack:
+    name: traefik
+    compose:
+      - /srv/docker-compose/traefik/docker-compose.yml
     
 
 - name: start readme docker-compose 
-  docker_compose:
-    project_src: /srv/docker-compose/readme
+  community.docker.docker_stack:
+    name: readme
+    compose:
+      - /srv/docker-compose/readme/docker-compose.yml
     
 
 - name: start miniflux docker-compose 
-  docker_compose:
-    project_src: /srv/docker-compose/miniflux 
+  community.docker.docker_stack:
+    name: miniflux
+    compose:
+      - /srv/docker-compose/miniflux/docker-compose.yml
 
 - name: start kanboard docker-compose 
-  docker_compose:
-    project_src: /srv/docker-compose/kanboard
+  community.docker.docker_stack:
+    name: kanboard
+    compose:
+      -  /srv/docker-compose/kanboard/docker-compose.yml
     
 - name: start node-red docker-compose 
-  docker_compose:
-    project_src: /srv/docker-compose/node-red
+  community.docker.docker_stack:
+    name: node-red
+    compose:
+      - /srv/docker-compose/node-red/docker-compose.yml
     
 - name: start uptime-kuma docker-compose 
-  docker_compose:
-    project_src: /srv/docker-compose/uptime-kuma
+  community.docker.docker_stack:
+    name: uptime-kuma
+    compose:
+      - /srv/docker-compose/uptime-kuma/docker-compose.yml
     
 - name: start jenkins docker-compose 
-  docker_compose:
-    project_src: /srv/docker-compose/jenkins
+  community.docker.docker_stack:
+    name: jenkins
+    compose:
+      - /srv/docker-compose/jenkins/docker-compose.yml
     
 - name: start linkace docker-compose 
-  docker_compose:
-    project_src: /srv/docker-compose/linkace
+  community.docker.docker_stack:
+    name: linkace
+    compose:
+      - /srv/docker-compose/linkace/docker-compose.yml
     
-- name: start audiobookshlef docker-compose 
-  docker_compose:
-    project_src: /srv/docker-compose/audio-bookshelf
+- name: start audiobookshelf docker-compose 
+  community.docker.docker_stack:
+    name: audiobookshelf
+    compose:
+      - /srv/docker-compose/audio-bookshelf/docker-compose.yml
     
 - name: start pingvin-share
-  docker_compose:
-    project_src: /srv/docker-compose/pingvin-share
+  community.docker.docker_stack:
+    name: pingvin-share
+    compose:
+      - /srv/docker-compose/pingvin-share/docker-compose.yml
 
     
 - name: start fbc-nginx
-  docker_compose:
-    project_src: /srv/docker-compose/fbc-nginx
+  community.docker.docker_stack:
+    name: fbc-nginx
+    compose:
+      - /srv/docker-compose/fbc-nginx/docker-compose.yml
 
 
 - name: start watchtower
-  docker_compose:
-    project_src: /srv/docker-compose/watchtower
+  community.docker.docker_stack:
+    name: watchtower
+    compose:
+      - /srv/docker-compose/watchtower/docker-compose.yml
 
 
 - name: start jellyfin
-  docker_compose:
-    project_src: /srv/docker-compose/jellyfin
+  community.docker.docker_stack:
+    name: jellyfin
+    compose:
+      - /srv/docker-compose/jellyfin/docker-compose.yml
