@@ -31,6 +31,7 @@
       - firefox-esr
       - htop
       - pulseaudio-utils
+      - neofetch
 
 - name: change shell to zsh
   become: yes
