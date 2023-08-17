@@ -71,38 +71,21 @@
     regexp: '^ZSH_THEME'
     line: 'ZSH_THEME="powerlevel9k/powerlevel9k"'
 
-
-- name: install powerline
+- name: install python modules packages
+  become: true
   tags: installs
-  pip:
-    name: powerline-status
-
-
-- name: install powerline
-  tags: installs
-  pip:
-    name: "{{  modules  }}"
+  apt:
+    update_cache: yes
+    name: "{{ packages }}"
   vars:
-    modules:
-      - psutil
-      - netifaces
-      - requests
-      - power
-      - i3ipc
+    packages:
+      - python3-powerline
+      - python3-psutil
+      - python3-netifaces
+      - python3-requests
+      - python3-power
+      - python3-i3ipc
 
-
-- name: pip modules for bumblebee status line
-  tags: installs
-  pip:
-    executable: pip3
-    name: "{{  modules  }}"
-  vars:
-    modules:
-      - psutil
-      - netifaces
-      - requests
-      - power
-      - i3ipc
 
 - name: add zsh config
   tags: configs
