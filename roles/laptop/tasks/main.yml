@@ -186,14 +186,6 @@
 
 
 
-- name: pull the seed repo
-  become: yes
-  become_user: zhudson
-  git:
-    repo: https://github.com/satiku/seed
-    dest: /home/zhudson/projects/seed
-
-
 
 - name: install i3-gaps dependencies
   become: true
