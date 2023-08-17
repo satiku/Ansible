@@ -30,7 +30,6 @@
       - openvpn
       - firefox-esr
       - htop
-      - mutt
 
 - name: change shell to zsh
   become: yes
@@ -185,31 +184,6 @@
     dest: /etc/lightdm/lightdm-gtk-greeter.conf
 
 
-- name: add base mutt config
-  tags: configs
-  copy:
-    src: files/.muttrc
-    dest: ~/.muttrc
-
-
-- name: create mutt in come directory
-  file:
-    path: ~/.mutt
-    state: directory
-
-
-- name: add base mutt gmail.satiku config
-  tags: configs
-  template:
-    src: templates/gmail.satiku.j2
-    dest: ~/.mutt/gmail.satiku
-
-
-- name: add base mutt config
-  tags: configs
-  template:
-    src: templates/gmail.zconingford.j2
-    dest: ~/.mutt/gmail.zconingford
 
 
 - name: pull the seed repo
@@ -219,25 +193,6 @@
     repo: https://github.com/satiku/seed
     dest: /home/zhudson/projects/seed
 
-- name: add base mutt config
-  tags: configs
-  copy:
-    src: files/.muttrc
-    dest: ~/.muttrc
-
-
-- name: add base mutt gmail.satiku config
-  tags: configs
-  template:
-    src: templates/gmail.satiku.j2
-    dest: ~/.mutt/gmail.satiku
-
-
-- name: add base mutt config
-  tags: configs
-  template:
-    src: templates/gmail.zconingford.j2
-    dest: ~/.mutt/gmail.zconingford
 
 
 - name: install i3-gaps dependencies
