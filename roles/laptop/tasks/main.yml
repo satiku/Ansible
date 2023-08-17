@@ -31,7 +31,6 @@
       - firefox-esr
       - htop
       - mutt
-      - taskwarrior
 
 - name: change shell to zsh
   become: yes
@@ -176,19 +175,6 @@
     path: ~/.task
     state: directory
 
-
-- name: add tmux config
-  tags: configs
-  copy:
-    src: files/task-pki/
-    dest: ~/.task
-
-
-- name: add base taskwarrior configjkj config
-  tags: configs
-  template:
-    src: templates/.taskrc.j2
-    dest: ~/.taskrc
 
 
 - name: add lightdm-gtk-greeter.conf
