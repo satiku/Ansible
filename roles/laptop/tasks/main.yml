@@ -30,6 +30,7 @@
       - openvpn
       - firefox-esr
       - htop
+      - pulseaudio-utils
 
 - name: change shell to zsh
   become: yes
