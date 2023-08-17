@@ -16,7 +16,6 @@
       - vim-nox
       - compton
       - lemonbar
-      - python-pip
       - python3-pip
       - fonts-powerline
       - tmux
