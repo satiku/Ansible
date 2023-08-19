@@ -186,6 +186,40 @@
     dest: /etc/lightdm/lightdm-gtk-greeter.conf
 
 
+- name: download Go 
+  ansible.builtin.get_url:
+    url: https://go.dev/dl/go1.21.0.linux-amd64.tar.gz
+    dest: ~/Downloads
+
+- name: remove old version of GO 
+  become: true
+  ansible.builtin.file: 
+    path: /usr/local/go
+    state: absent
+
+- name: Create /usr/local/go directory
+  become: true
+  ansible.builtin.file:
+    path: /usr/local/go 
+    state: directory
+    mode: '0755'
 
 
+- name: Extract go to /usr/local/go
+  become: true
+  ansible.builtin.unarchive:
+    src: ~/Downloads/go1.21.0.linux-amd64.tar.gz
+    dest: /usr/local/
+
+
+- name: remove old version of GO 
+  ansible.builtin.file: 
+    path: ~/Downloads/go1.21.0.linux-amd64.tar.gz
+    state: absent
+
+- name: add .profile config
+  tags: configs
+  copy:
+    src: files/.profile
+    dest: ~/.profile
 
