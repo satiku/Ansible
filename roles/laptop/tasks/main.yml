@@ -16,7 +16,6 @@
       - vim-nox
       - compton
       - lemonbar
-      - python-pip
       - python3-pip
       - fonts-powerline
       - tmux
@@ -31,79 +30,62 @@
       - openvpn
       - firefox-esr
       - htop
-      - mutt
-      - taskwarrior
+      - pulseaudio-utils
+      - neofetch
 
 - name: change shell to zsh
   become: yes
   lineinfile:
     create: yes
     dest: /etc/passwd
-    regexp: '^zhudson'
-    line: 'zhudson:x:1000:1000:zhudson,,,:/home/zhudson:/usr/bin/zsh'
+    regexp: '^solo'
+    line: 'solo:x:1000:1000:solo,,,:/home/solo:/usr/bin/zsh'
 
 
 - name: bumblebee repo
   become: yes
-  become_user: zhudson
+  become_user: solo
   git:
     repo: https://github.com/tobi-wan-kenobi/bumblebee-status
-    dest: /home/zhudson/.bumblebee-status
+    dest: /home/solo/.bumblebee-status
 
 - name: install oh-my-zsh
   shell: sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
   args:
-    chdir: /home/zhudson
-    creates: /home/zhudson/.oh-my-zsh/README.md
+    chdir: /home/solo
+    creates: /home/solo/.oh-my-zsh/README.md
 
 - name: zsh powerlevel 9k repo
   become: yes
-  become_user: zhudson
+  become_user: solo
   git:
     repo: https://github.com/bhilburn/powerlevel9k.git
-    dest: /home/zhudson/.oh-my-zsh/custom/themes/powerlevel9k
+    dest: /home/solo/.oh-my-zsh/custom/themes/powerlevel9k
 
 
 - name: change shell to zsh
   become: yes
   lineinfile:
     create: yes
-    dest: /home/zhudson/.zshrc
+    dest: /home/solo/.zshrc
     regexp: '^ZSH_THEME'
     line: 'ZSH_THEME="powerlevel9k/powerlevel9k"'
 
-
-- name: install powerline
+- name: install python modules packages
+  become: true
   tags: installs
-  pip:
-    name: powerline-status
-
-
-- name: install powerline
-  tags: installs
-  pip:
-    name: "{{  modules  }}"
+  apt:
+    update_cache: yes
+    name: "{{ packages }}"
   vars:
-    modules:
-      - psutil
-      - netifaces
-      - requests
-      - power
-      - i3ipc
+    packages:
+      - python3-powerline
+      - python3-psutil
+      - python3-netifaces
+      - python3-requests
+      - python3-power
+      - python3-i3ipc
 
-
-- name: pip modules for bumblebee status line
-  tags: installs
-  pip:
-    executable: pip3
-    name: "{{  modules  }}"
-  vars:
-    modules:
-      - psutil
-      - netifaces
-      - requests
-      - power
-      - i3ipc
 
 - name: add zsh config
   tags: configs
@@ -195,19 +177,6 @@
     state: directory
 
 
-- name: add tmux config
-  tags: configs
-  copy:
-    src: files/task-pki/
-    dest: ~/.task
-
-
-- name: add base taskwarrior configjkj config
-  tags: configs
-  template:
-    src: templates/.taskrc.j2
-    dest: ~/.taskrc
-
 
 - name: add lightdm-gtk-greeter.conf
   tags: configs
@@ -217,105 +186,6 @@
     dest: /etc/lightdm/lightdm-gtk-greeter.conf
 
 
-- name: add base mutt config
-  tags: configs
-  copy:
-    src: files/.muttrc
-    dest: ~/.muttrc
 
 
-- name: create mutt in come directory
-  file:
-    path: ~/.mutt
-    state: directory
 
-
-- name: add base mutt gmail.satiku config
-  tags: configs
-  template:
-    src: templates/gmail.satiku.j2
-    dest: ~/.mutt/gmail.satiku
-
-
-- name: add base mutt config
-  tags: configs
-  template:
-    src: templates/gmail.zconingford.j2
-    dest: ~/.mutt/gmail.zconingford
-
-
-- name: pull the seed repo
-  become: yes
-  become_user: zhudson
-  git:
-    repo: https://github.com/satiku/seed
-    dest: /home/zhudson/projects/seed
-
-- name: add base mutt config
-  tags: configs
-  copy:
-    src: files/.muttrc
-    dest: ~/.muttrc
-
-
-- name: add base mutt gmail.satiku config
-  tags: configs
-  template:
-    src: templates/gmail.satiku.j2
-    dest: ~/.mutt/gmail.satiku
-
-
-- name: add base mutt config
-  tags: configs
-  template:
-    src: templates/gmail.zconingford.j2
-    dest: ~/.mutt/gmail.zconingford
-
-
-- name: install i3-gaps dependencies
-  become: true
-  tags: installs
-  apt:
-    update_cache: yes
-    name: "{{ packages }}"
-  vars:
-    packages:
-      - gcc
-      - make
-      - dh-autoreconf
-      - libxcb-keysyms1-dev
-      - libpango1.0-dev
-      - libxcb-util0-dev
-      - xcb
-      - libxcb1-dev
-      - libxcb-icccm4-dev
-      - libyajl-dev
-      - libev-dev
-      - libxcb-xkb-dev
-      - libxcb-cursor-dev
-      - libxkbcommon-dev
-      - libxcb-xinerama0-dev
-      - libxkbcommon-x11-dev
-      - libstartup-notification0-dev
-      - libxcb-randr0-dev
-      - libxcb-xrm0
-      - libxcb-xrm-dev
-      - libxcb-shape0-dev
-
-
-- name: pull i3-gaps
-  become: yes
-  become_user: zhudson
-  register: pull_i3gaps
-  git:
-    repo: https://github.com/Airblader/i3
-    dest: /home/zhudson/i3-gaps
-
-
-- name: run i3-gaps compile script
-  become: yes
-  become_user: zhudson
-  when: pull_i3gaps.changed
-  script: files/i3-gaps_install.sh
-  args:
-    chdir: /home/zhudson
