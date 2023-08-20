@@ -33,6 +33,11 @@
       - pulseaudio-utils
       - neofetch
       - powerline
+      - telegram-desktop
+      - obs-studio
+      - v4l2loopback-dkms
+
+
 - name: change shell to zsh
   become: yes
   lineinfile:
