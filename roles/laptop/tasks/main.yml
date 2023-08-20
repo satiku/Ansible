@@ -32,7 +32,7 @@
       - htop
       - pulseaudio-utils
       - neofetch
-
+      - powerline
 - name: change shell to zsh
   become: yes
   lineinfile:
