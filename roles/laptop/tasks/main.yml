@@ -31,6 +31,7 @@
       - firefox-esr
       - htop
       - pulseaudio-utils
+      - pulseaudio
       - neofetch
       - powerline
 - name: change shell to zsh
