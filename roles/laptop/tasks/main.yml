@@ -33,6 +33,18 @@
       - pulseaudio-utils
       - neofetch
       - powerline
+      - syncthing 
+
+
+- name: enable and start syncthing 
+  become: true
+  ansible.builtin.systemd:
+    name: syncthing@{{  ansible_user  }}.service
+    state: started
+    enabled: true
+
+
+
 - name: change shell to zsh
   become: yes
   lineinfile:
