@@ -55,8 +55,6 @@
 
 
 - name: pull MagicMirror
-  become: yes
-  become_user: pi
   git:
     repo: https://github.com/MagicMirrorOrg/MagicMirror.git
     dest: /home/pi/MagicMirror
@@ -65,8 +63,6 @@
 
 
 - name: pull traffic
-  become: yes
-  become_user: pi
   git:
     repo: https://github.com/SamLewis0602/MMM-Traffic.git
     dest: /home/pi/MagicMirror/modules/MMM-Traffic
@@ -86,8 +82,6 @@
 
 
 - name: Install pm2
-#  become: yes
-#  become_user: pi
   npm:
     name: pm2
     global: yes
