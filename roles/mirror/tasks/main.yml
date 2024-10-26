@@ -37,7 +37,7 @@
   vars:
     packages:
       - nodejs
-      - npm
+#      - npm
 
 - name: copy script
   copy:
