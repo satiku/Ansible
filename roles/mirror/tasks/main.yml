@@ -8,6 +8,19 @@
     mode: 0755
 
 
+- name: Run latest node.js source script
+  command: bash /home/pi/nodesource_setup.sh
+  become: yes
+  become_user: pi
+#  args:
+#    chdir: /home/pi
+#    creates: /home/pi/MagicMirror/
+#  notify: auto startup
+#
+
+
+
+
 #- name: rotate display
 #  lineinfile:
 #    dest: /boot/config.txt
@@ -32,15 +45,6 @@
     mode: 0755
 
 
-- name: Run latest magic mirror script
-  command: bash /home/pi/nodesource_setup.sh
-  become: yes
-  become_user: pi
-#  args:
-#    chdir: /home/pi
-#    creates: /home/pi/MagicMirror/
-#  notify: auto startup
-#
 
 # - name : pull magic mirror
 #   become: yes
