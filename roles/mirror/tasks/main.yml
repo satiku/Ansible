@@ -8,12 +8,12 @@
 #     mode: 0755
 
 
-- name: rotate display
-  lineinfile:
-    dest: /boot/config.txt
-    regexp: '^display_rotate'
-    line: 'display_rotate=3'
-
+#- name: rotate display
+#  lineinfile:
+#    dest: /boot/config.txt
+#    regexp: '^display_rotate'
+#    line: 'display_rotate=3'
+#
 - name: install npm
   apt:
     update_cache: yes
