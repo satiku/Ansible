@@ -33,7 +33,7 @@
 
 
 - name: Run latest magic mirror script
-  command: /home/pi/nodesource_setup.sh
+  command: bash /home/pi/nodesource_setup.sh
   become: yes
   become_user: pi
 #  args:
