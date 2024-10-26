@@ -1,0 +1,11 @@
+---
+- name: pitop
+  hosts: localhost
+  user: pi
+  become: true
+  roles:
+    - mirror
+
+
+
+
