@@ -74,34 +74,8 @@
   notify: install traffic
 
 
-- name: pull PIR
-  become: yes
-  become_user: pi
-  git:
-    repo: https://github.com/paviro/MMM-PIR-Sensor.git
-    dest: /home/pi/MagicMirror/modules/MMM-PIR-Sensor
-    force: yes
-  notify: install PIR
 
 
-- name: pull redit
-  become: yes
-  become_user: pi
-  git:
-    repo: https://github.com/kjb085/MMM-Reddit.git
-    dest: /home/pi/MagicMirror/modules/MMM-Reddit
-    force: yes
-  notify: install redit
-
-
-- name: pull todoist
-  become: yes
-  become_user: pi
-  git:
-    repo: https://github.com/cbrooker/MMM-Todoist
-    dest: /home/pi/MagicMirror/modules/MMM-Todoist
-    force: yes
-  notify: install todoist
 
 
 - name: load config

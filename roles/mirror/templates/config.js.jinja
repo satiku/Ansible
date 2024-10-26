@@ -76,18 +76,6 @@ var config = {
 			}
 		},
 		{
-			module: 'MMM-Todoist',
-			position: 'top_right',
-			header: 'Todoist',
-			config: {
-				accessToken: '{{  todoist_api  }}',
-				maximumEntries: 60,
-				updateInterval: 60000,
-				fade: false,
-				projects: [2181938755, 2181883188, 2184028181, 2181882532]
-			}
-		},
-		{
 			module: 'MMM-Traffic',
 			position: 'top_left',
 			classes: 'dimmed medium', //optional, default is 'bright medium', only applies to commute info not route_name
@@ -103,20 +91,6 @@ var config = {
 				limitRed: 20, //Greater than 20% of journey time due to traffic
 				traffic_model: 'pessimistic',
 				interval: 120000 //2 minutes
-			}
-		},
-		{
-			module: "MMM-Reddit",
-			position: "bottom_center",
-			config: {
-		    		subreddit: ['raspberry_pi', 'science', 'linux'],
-					displayType: 'headlines',
-					count: 16,
-					show: 4,
-					width: 700,
-					showSubreddit: true,
-					colorText: false,
-					showThumbnail: false,
 			}
 		},
 	]
