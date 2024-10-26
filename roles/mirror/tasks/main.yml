@@ -3,7 +3,7 @@
 
 - name: Download latest node.js install script
   get_url:
-    url: https://deb.nodesource.com/setup_23.x
+    url: https://deb.nodesource.com/setup_22.x
     dest: /home/pi/nodesource_setup.sh
     mode: 0755
 
