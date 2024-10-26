@@ -56,23 +56,25 @@ var config = {
 			}
 		},
 		{
-			module: "currentweather",
+			module: "weather",
 			position: "top_right",
 			header: "Weather Today",
 			config: {
+				type: "current",
 				location: "{{  openweather_location  }}",
 				locationID: "{{  openweather_id  }}",  //ID from http://www.openweathermap.org/help/city_list.txt
-				appid: "{{  openweather_api  }}"
+				apikey: "{{  openweather_api  }}"
 			}
 		},
 		{
-			module: "weatherforecast",
+			module: "weather",
 			position: "top_right",
 			header: "Weather Forecast",
 			config: {
+				type: "forecast",
 				location: "{{  openweather_location  }}",
 				locationID: "{{  openweather_id  }}",  //ID from http://www.openweathermap.org/help/city_list.txt
-				appid: "{{  openweather_api  }}"
+				apikey: "{{  openweather_api  }}"
 			}
 		},
 		{
