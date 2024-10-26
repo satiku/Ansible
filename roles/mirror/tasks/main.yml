@@ -1,11 +1,11 @@
 ---
 
 
-# - name: Download latest Maggic mirror script
-#   get_url:
-#     url: https://raw.githubusercontent.com/MichMich/MagicMirror/master/installers/raspberry.sh
-#     dest: /home/pi/raspberry.sh
-#     mode: 0755
+- name: Download latest node.js install script
+  get_url:
+    url: https://deb.nodesource.com/setup_23.x
+    dest: /home/pi/nodesource_setup.sh
+    mode: 0755
 
 
 #- name: rotate display
@@ -31,11 +31,11 @@
     owner: pi
     mode: 0755
 
-#
-#- name: Run latest magic mirror script
-#  command: /home/pi/raspberry.sh
-#  become: yes
-#  become_user: pi
+
+- name: Run latest magic mirror script
+  command: /home/pi/nodesource_setup.sh
+  become: yes
+  become_user: pi
 #  args:
 #    chdir: /home/pi
 #    creates: /home/pi/MagicMirror/
