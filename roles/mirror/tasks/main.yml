@@ -33,10 +33,10 @@
   apt:
     update_cache: yes
     name: "{{  packages  }}"
-    state: latest
+    state: present
   vars:
     packages:
-      - nodejs
+      - nodejs=22.0
 #      - npm
 
 - name: copy script
