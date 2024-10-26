@@ -89,12 +89,6 @@
   notify: install todoist
 
 
-
-
-- name: grant cec control
-  shell: chmod u+s /opt/vc/bin/tvservice && sudo chmod u+s /bin/chvt
-
-
 - name: load config
   template:
     src: templates/config.js.jinja
