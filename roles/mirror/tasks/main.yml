@@ -17,9 +17,12 @@
 - name: install npm
   apt:
     update_cache: yes
-    name: nodejs
+    name: {{  packages  }}
     state: present
-
+  vars:
+    packages:
+      - nodejs
+      - npm
 
 - name: copy script
   copy:
