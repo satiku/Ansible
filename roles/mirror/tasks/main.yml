@@ -33,7 +33,7 @@
   apt:
     update_cache: yes
     name: "{{  packages  }}"
-    state: present
+    state: latest
   vars:
     packages:
       - nodejs
