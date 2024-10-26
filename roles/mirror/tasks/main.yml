@@ -17,7 +17,7 @@
 - name: install npm
   apt:
     update_cache: yes
-    name: {{  packages  }}
+    name: "{{  packages  }}"
     state: present
   vars:
     packages:
