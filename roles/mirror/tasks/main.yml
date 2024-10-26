@@ -28,6 +28,8 @@
 #    line: 'display_rotate=3'
 #
 - name: install npm
+  become: yes
+  become_user: root
   apt:
     update_cache: yes
     name: "{{  packages  }}"
