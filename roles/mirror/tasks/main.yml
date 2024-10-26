@@ -28,16 +28,16 @@
     owner: pi
     mode: 0755
 
-
-- name: Run latest magic mirror script
-  command: /home/pi/raspberry.sh
-  become: yes
-  become_user: pi
-  args:
-    chdir: /home/pi
-    creates: /home/pi/MagicMirror/
-  notify: auto startup
-
+#
+#- name: Run latest magic mirror script
+#  command: /home/pi/raspberry.sh
+#  become: yes
+#  become_user: pi
+#  args:
+#    chdir: /home/pi
+#    creates: /home/pi/MagicMirror/
+#  notify: auto startup
+#
 
 # - name : pull magic mirror
 #   become: yes
@@ -47,6 +47,16 @@
 #     dest: /home/pi/MagicMirror
 #     force: yes
 #   notify: install mirror
+
+
+- name: pull MagicMirror
+  become: yes
+  become_user: pi
+  git:
+    repo: https://github.com/MagicMirrorOrg/MagicMirror.git
+    dest: /home/pi/MagicMirror
+    force: yes
+  notify: install mirror
 
 
 - name: pull traffic
