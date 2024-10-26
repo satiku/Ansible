@@ -36,7 +36,7 @@
     state: present
   vars:
     packages:
-      - nodejs=22.0.0
+      - nodejs=22.0.0-1nodesource1
 #      - npm
 
 - name: copy script
