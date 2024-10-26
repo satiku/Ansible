@@ -68,7 +68,7 @@
     dest: /home/pi/MagicMirror/modules/MMM-Traffic
     force: yes
   notify: install traffic
-
+  tags: modules
 
 
 
@@ -79,6 +79,7 @@
     src: templates/config.js.jinja
     dest: /home/pi/MagicMirror/config/config.js
   notify: restart
+  tags: modules
 
 
 - name: Install pm2
