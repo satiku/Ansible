@@ -89,10 +89,6 @@
   notify: install todoist
 
 
-- name: add pi to gpio
-  user:
-    name: pi
-    group: gpio
 
 
 - name: grant cec control
