@@ -32,12 +32,8 @@
   become_user: root
   apt:
     update_cache: yes
-    name: "{{  packages  }}"
+    name: nodejs=22.0.0-1nodesource1
     state: present
-  vars:
-    packages:
-      - nodejs=22.0.0-1nodesource1
-#      - npm
 
 - name: copy script
   copy:
