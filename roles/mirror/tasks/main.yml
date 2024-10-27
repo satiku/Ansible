@@ -62,12 +62,12 @@
   notify: install mirror
 
 
-- name: pull traffic
+- name: pull google-route
   git:
-    repo: https://github.com/SamLewis0602/MMM-Traffic.git
-    dest: /home/pi/MagicMirror/modules/MMM-Traffic
+    repo: https://github.com/mrdis/MMM-google-route.git
+    dest: /home/pi/MagicMirror/modules/MMM-google-route
     force: yes
-  notify: install traffic
+  notify: install google-route
   tags: modules
 
 

@@ -19,12 +19,12 @@
 #    creates: /path/to/database
 
 
-- name: install PIR
+- name: install google-route
   become: yes
   become_user: pi
   command: npm install
   args:
-   chdir: /home/pi/MagicMirror/modules/MMM-PIR-Sensor
+   chdir: /home/pi/MagicMirror/modules/MMM-google-route
 #    creates: /path/to/database
 
 

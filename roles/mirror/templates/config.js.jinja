@@ -78,21 +78,13 @@ var config = {
 			}
 		},
 		{
-			module: 'MMM-Traffic',
+			module: 'MMM-google-route',
 			position: 'top_left',
-			classes: 'dimmed medium', //optional, default is 'bright medium', only applies to commute info not route_name
 			config: {
-				api_key: '{{  google_api  }}',
-				mode: 'driving',
+				key: '{{  google_api  }}',
+				travelMode: 'DRIVING',
 				origin: '47 Messer Street, Providence, RI 02909',
-				destination: '55 Technology Way,  West Greenwich, RI 02817',
-				route_name: 'Home to Work',
-				changeColor: true,
-				showGreen: false,
-				limitYellow: 10, //Greater than 5% of journey time due to traffic
-				limitRed: 20, //Greater than 20% of journey time due to traffic
-				traffic_model: 'pessimistic',
-				interval: 120000 //2 minutes
+				destination: '55 Technology Way,  West Greenwich, RI 02817'
 			}
 		},
 	]
